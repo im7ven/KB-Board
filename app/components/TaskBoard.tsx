@@ -118,7 +118,7 @@ const TaskComponent = ({ task }: { task: Task }) => {
 
       <div
         onClick={() => editTaskModal.current?.showModal()}
-        className={`space-y-5 rounded-lg p-4 shadow-xl ${
+        className={`space-y-5 rounded-lg p-4 shadow-xl hover:scale-105 hover:transition cursor-pointer ${
           activeTheme === "myTheme" ? "bg-white" : "bg-neutral"
         }`}
       >
@@ -181,7 +181,7 @@ const TaskBoard = ({ isSideBarVisible, onEdit }: TaskBoardProps) => {
           {status === "authenticated" && (
             <div
               onClick={() => onEdit()}
-              className={`rounded min-w-[17.5rem] flex items-center justify-center font-bold text-xl text-[#828FA3] shadow hover:bg-base-300 hover:scale-[1.02] transition ${
+              className={` cursor-pointer rounded min-w-[17.5rem] flex items-center justify-center font-bold text-xl text-[#828FA3] shadow hover:bg-base-300 hover:scale-[1.02] transition ${
                 activeTheme === "myTheme" ? "bg-[#EEF2FE]" : "bg-base-200"
               }`}
             >
