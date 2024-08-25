@@ -11,6 +11,7 @@ import useTaskBoards from "../hooks/useTaskBoards";
 const UserContent = () => {
   const [showSideBar, setShowSideBar] = useState(true);
   const { isLoading } = useTaskBoards();
+  const { data: session } = useSession();
 
   const handleShowSideBar = () => {
     setShowSideBar(!showSideBar);
@@ -22,7 +23,7 @@ const UserContent = () => {
     editModalRef.current?.showModal();
   };
 
-  if (isLoading) {
+  if (session && isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <span className="loading loading-bars loading-lg"></span>
