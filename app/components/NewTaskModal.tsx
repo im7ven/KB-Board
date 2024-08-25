@@ -47,7 +47,11 @@ const NewTaskModal = ({ onEdit }: { onEdit: () => void }) => {
     });
   }, [activeBoard, reset]);
 
-  const { mutate: createTask } = useMutation<void, unknown, TaskForm>(
+  const { mutate: createTask, isLoading } = useMutation<
+    void,
+    unknown,
+    TaskForm
+  >(
     async (newTaskData: TaskForm) => {
       await axios.post("/api/tasks", newTaskData);
     },
@@ -197,7 +201,11 @@ const NewTaskModal = ({ onEdit }: { onEdit: () => void }) => {
                 Cancel
               </button>
               <button type="submit" className="btn btn-primary grow">
-                Submit Task
+                {!isLoading ? (
+                  "Submit Task"
+                ) : (
+                  <span className="loading loading-spinner loading-md"></span>
+                )}
               </button>
             </div>
           </form>
